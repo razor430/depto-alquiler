@@ -63,7 +63,18 @@ export default function App() {
   return (
     <div className="page">
       <header className="topbar">
-        <span className="logo-dot" /> VILLA · RENTA
+        <svg className="logo-city" viewBox="0 0 34 22" width="32" height="21" aria-hidden="true">
+          <rect x="1.5" y="9" width="8" height="11.5" rx="1" fill="#1F7A5A" />
+          <rect x="11.5" y="3" width="10" height="17.5" rx="1" fill="#1B1B1B" />
+          <rect x="23.5" y="7" width="9" height="13.5" rx="1" fill="#1F7A5A" opacity=".55" />
+          <rect x="13.7" y="5.5" width="2.2" height="2.2" fill="#FAF8F4" />
+          <rect x="17.1" y="5.5" width="2.2" height="2.2" fill="#FAF8F4" />
+          <rect x="13.7" y="9" width="2.2" height="2.2" fill="#FAF8F4" />
+          <rect x="17.1" y="9" width="2.2" height="2.2" fill="#FAF8F4" />
+          <rect x="13.7" y="12.5" width="2.2" height="2.2" fill="#FAF8F4" />
+          <rect x="17.1" y="12.5" width="2.2" height="2.2" fill="#FAF8F4" />
+        </svg>
+        VILLA CRESPO · RENTA
         <a className="top-cta" href={wa} target="_blank" rel="noreferrer">WhatsApp</a>
       </header>
 
