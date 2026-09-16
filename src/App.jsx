@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { SITE, PHOTOS, VIDEOS, HERO_IMG, whatsappLink } from "./config.js";
+import { SITE, PHOTOS, VIDEOS, HERO_IMG, COUNTER, whatsappLink } from "./config.js";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Navigation, Pagination, Keyboard } from "swiper/modules";
 import "swiper/css";
@@ -27,6 +27,7 @@ export default function App() {
   const [index, setIndex] = useState(0);
   const [lightbox, setLightbox] = useState(false);
   const [grid, setGrid] = useState(false);
+  const [visitas, setVisitas] = useState(null);
   const swiperRef = useRef(null);
   const wa = whatsappLink();
   const total = PHOTOS.length;
@@ -48,6 +49,24 @@ export default function App() {
       /* noop */
     }
   };
+
+  useEffect(() => {
+    fetch(`https://abacus.jasoncameron.dev/hit/${COUNTER.namespace}/${COUNTER.key}`)
+      .then((r) => r.json())
+      .then((d) => {
+        if (typeof d.value === "number") setVisitas(d.value);
+        else throw new Error("bad");
+      })
+      .catch(() => {
+        try {
+          const n = (parseInt(localStorage.getItem("visitas-local") || "0", 10) || 0) + 1;
+          localStorage.setItem("visitas-local", String(n));
+          setVisitas(n);
+        } catch {
+          /* sin contador */
+        }
+      });
+  }, []);
 
   useEffect(() => {
     if (!lightbox) return;
@@ -214,7 +233,7 @@ export default function App() {
         <small>Respuesta rápida · Sin compromiso</small>
       </section>
 
-      <footer>Hecho para renta inmediata · Fotos reales del inmueble</footer>
+      <footer>Hecho para renta inmediata · Fotos reales del inmueble{visitas !== null && <> · 👁 {visitas.toLocaleString("es-AR")} visitas</>}</footer>
 
       {/* LIGHTBOX */}
       {lightbox && (

@@ -57,3 +57,9 @@ export function whatsappLink() {
   const msg = encodeURIComponent(SITE.whatsappMessage);
   return `https://wa.me/${SITE.whatsappNumber}?text=${msg}`;
 }
+
+// Contador global de visitas (Abacus, gratuito)
+export const COUNTER = {
+  namespace: "villa-web-seven",
+  key: "visitas",
+};
