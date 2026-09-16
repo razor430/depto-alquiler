@@ -53,12 +53,6 @@ export const VIDEOS = [
   "/media/IMG_8750.mp4",
 ];
 
-// Collage home: 1 foto principal que sobresale + 3 de apoyo
-export const COLLAGE = {
-  principal: PHOTOS[5],
-  resto: [PHOTOS[3], PHOTOS[9], PHOTOS[13]],
-};
-
 export function whatsappLink() {
   const msg = encodeURIComponent(SITE.whatsappMessage);
   return `https://wa.me/${SITE.whatsappNumber}?text=${msg}`;
