@@ -75,7 +75,6 @@ export default function App() {
           <rect x="17.1" y="12.5" width="2.2" height="2.2" fill="#FAF8F4" />
         </svg>
         VILLA CRESPO · RENTA
-        <a className="top-cta" href={wa} target="_blank" rel="noreferrer">WhatsApp</a>
       </header>
 
       {/* HERO */}
