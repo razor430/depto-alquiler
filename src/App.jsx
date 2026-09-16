@@ -108,7 +108,6 @@ export default function App() {
             <a className="btn-wa" href={wa} target="_blank" rel="noreferrer">📲 WhatsApp</a>
             <a className="btn-ghost" href="#galeria">Ver fotos</a>
           </div>
-          <small>{SITE.precio}</small>
         </div>
       </section>
 
@@ -217,7 +216,6 @@ export default function App() {
           <li>✓ <strong>Cocheras:</strong> Posibilidad de alquilar cochera en el mismo edificio (opcional, no incluida en el precio).</li>
           <li>✓ <strong>Apto profesional</strong></li>
         </ul>
-        <p className="muted">¿Quieres la descripción completa? Pídela por WhatsApp y te enviamos todos los detalles + ubicación exacta.</p>
       </section>
 
       {/* CONTACTO / CIERRE */}
