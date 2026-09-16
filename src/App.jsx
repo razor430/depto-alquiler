@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { SITE, PHOTOS, VIDEOS, HERO_IMG, whatsappLink } from "./config.js";
+import { SITE, PHOTOS, VIDEOS, HERO_IMG, COLLAGE, whatsappLink } from "./config.js";
 import "./App.css";
 
 function Icon({ d }) {
@@ -85,6 +85,27 @@ export default function App() {
           </div>
           <small>{SITE.precio}</small>
         </div>
+      </section>
+
+      {/* COLLAGE */}
+      <section className="collage" aria-label="Fotos destacadas">
+        {[COLLAGE.resto[0], COLLAGE.resto[1]].map((src) => (
+          <button key={src} onClick={() => { setIndex(PHOTOS.indexOf(src)); setLightbox(true); }}>
+            <img src={src} alt="Foto del departamento" loading="lazy" />
+          </button>
+        ))}
+        <button
+          className="c-main"
+          onClick={() => { setIndex(PHOTOS.indexOf(COLLAGE.principal)); setLightbox(true); }}
+        >
+          <img src={COLLAGE.principal} alt="Foto principal del departamento" loading="eager" />
+        </button>
+        <button
+          className="c-wide"
+          onClick={() => { setIndex(PHOTOS.indexOf(COLLAGE.resto[2])); setLightbox(true); }}
+        >
+          <img src={COLLAGE.resto[2]} alt="Balcón terraza del departamento" loading="lazy" />
+        </button>
       </section>
 
       {/* HIGHLIGHTS */}
@@ -189,9 +210,10 @@ export default function App() {
         <h2>Un espacio pensado para ti</h2>
         <p>
           <strong>Living-Comedor:</strong> Amplio y muy luminoso, con pisos de
-          primera calidad y salida directa al balcón.
+          primera calidad y salida directa al amplio balcón terraza en 8vo piso.
         </p>
         <ul className="check">
+          <li>✓ <strong>A estrenar</strong> en Villa Crespo</li>
           <li>✓ <strong>Aire Acondicionado</strong></li>
           <li>✓ <strong>Cocina integrada:</strong> Diseño moderno con muebles bajo mesada y alacenas completas, cocina con anafe y horno de última generación.</li>
           <li>✓ <strong>Dormitorio:</strong> Confortable, con excelente luz natural y placard equipado.</li>

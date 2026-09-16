@@ -35,6 +35,15 @@ body{margin:0;font-family:var(--sans);background:var(--bg);color:var(--ink);-web
 .sec-head{display:flex;align-items:center;justify-content:space-between}
 .link{background:none;border:none;color:var(--accent);font-weight:700}
 
+/* Collage home: 4 fotos, 1 principal al medio */
+.collage{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px 12px 0}
+.collage button{border:none;padding:0;border-radius:14px;overflow:hidden;background:#eee;cursor:zoom-in}
+.collage img{width:100%;height:150px;object-fit:cover;display:block}
+.collage .c-main{grid-column:1/-1;border:5px solid #fff;box-shadow:0 16px 40px rgba(0,0,0,.28);transform:scale(1.02);z-index:1;margin:2px 0;border-radius:18px}
+.collage .c-main img{height:260px}
+.collage .c-wide{grid-column:1/-1}
+.collage .c-wide img{height:170px}
+
 .high-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 .high-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px;display:flex;flex-direction:column;gap:4px;color:var(--ink)}
 .high-card svg{color:var(--accent)}

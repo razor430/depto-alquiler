@@ -1,15 +1,15 @@
 // EDITA AQUÍ tus datos reales. Todo el sitio lee de este archivo.
 export const SITE = {
-  titulo: "Departamento en alquiler",
-  zona: "Tu próximo hogar",
-  subtitulo: "Luminoso · Ventilado · Apto profesional · Listo para habitar",
+  titulo: "Alquilo departamento a estrenar",
+  zona: "en Villa Crespo",
+  subtitulo: "A estrenar · Balcón terraza en 8vo piso · Apto profesional",
   badge: "Disponible ahora",
   precio: "$940.000 ARS / mes",
   precioMensual: "$940.000 ARS",
   // Cambia por tu número real con código país, sin + ni espacios. Ej: 5215500000000
   whatsappNumber: "5491140648243",
   whatsappMessage: "Hola, me interesa el departamento en alquiler. ¿Sigue disponible? Quiero agendar una visita.",
-  ubicacionAprox: "Zona residencial · Acceso rápido a avenidas principales",
+  ubicacionAprox: "Villa Crespo",
   requisitos: [
     "Duración: Contrato tradicional a 2 años",
     "1 mes de adelanto y 1 mes de depósito",
@@ -52,6 +52,12 @@ export const PHOTOS = [
 export const VIDEOS = [
   "/media/IMG_8750.mp4",
 ];
+
+// Collage home: 1 foto principal que sobresale + 3 de apoyo
+export const COLLAGE = {
+  principal: PHOTOS[5],
+  resto: [PHOTOS[3], PHOTOS[9], PHOTOS[13]],
+};
 
 export function whatsappLink() {
   const msg = encodeURIComponent(SITE.whatsappMessage);
