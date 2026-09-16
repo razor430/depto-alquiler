@@ -221,7 +221,6 @@ export default function App() {
       {/* CONTACTO / CIERRE */}
       <section className="section card dark" id="contacto">
         <h2>Agenda tu visita hoy</h2>
-        <p className="price">{SITE.precioMensual} <span>/ mes</span></p>
         <p>📍 {SITE.ubicacionAprox}</p>
         <h3>Condiciones</h3>
         <ul>
