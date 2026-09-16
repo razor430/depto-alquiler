@@ -1,5 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { SITE, PHOTOS, VIDEOS, HERO_IMG, whatsappLink } from "./config.js";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectFade, Navigation, Pagination, Keyboard } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import "./App.css";
 
 function Icon({ d }) {
@@ -21,22 +27,12 @@ export default function App() {
   const [index, setIndex] = useState(0);
   const [lightbox, setLightbox] = useState(false);
   const [grid, setGrid] = useState(false);
-  const touchX = useRef(null);
+  const swiperRef = useRef(null);
   const wa = whatsappLink();
   const total = PHOTOS.length;
 
-  const goTo = (i) => setIndex(((i % total) + total) % total);
-  const next = () => goTo(index + 1);
-  const prev = () => goTo(index - 1);
-
-  const onTouchStart = (e) => { touchX.current = e.touches[0].clientX; };
-  const onTouchEnd = (e) => {
-    if (touchX.current == null) return;
-    const dx = e.changedTouches[0].clientX - touchX.current;
-    if (dx < -40) next();
-    else if (dx > 40) prev();
-    touchX.current = null;
-  };
+  const openPhoto = (i) => { setIndex(i); swiperRef.current?.slideTo(i, 0); setLightbox(true); };
+  const closeLightbox = () => { setLightbox(false); requestAnimationFrame(() => swiperRef.current?.slideTo(index, 0)); };
 
   const handleVideoPlay = (e) => {
     const v = e.currentTarget;
@@ -110,54 +106,45 @@ export default function App() {
 
         {!grid ? (
           <>
-            <div
-              className="slider-viewport"
-              onTouchStart={onTouchStart}
-              onTouchEnd={onTouchEnd}
-            >
-              <div
-                className="slider-track"
-                style={{ transform: `translateX(-${index * 100}%)` }}
+            <div className="gal-wrap">
+              <Swiper
+                modules={[EffectFade, Navigation, Pagination, Keyboard]}
+                effect="fade"
+                fadeEffect={{ crossFade: true }}
+                speed={600}
+                slidesPerView={1}
+                navigation
+                keyboard={{ enabled: true }}
+                pagination={{ clickable: true }}
+                onSwiper={(s) => { swiperRef.current = s; }}
+                onSlideChange={(s) => setIndex(s.activeIndex)}
+                className="gal-swiper"
               >
                 {PHOTOS.map((src, i) => (
-                  <button
-                    key={src}
-                    className={`slider-slide ${i === index ? "active" : ""}`}
-                    onClick={() => { setIndex(i); setLightbox(true); }}
-                    aria-label={`Abrir foto ${i + 1}`}
-                    tabIndex={i === index ? 0 : -1}
-                  >
-                    <img
-                      src={src}
-                      alt={`Foto ${i + 1} del departamento`}
-                      loading={i < 2 ? "eager" : "lazy"}
-                      draggable="false"
-                    />
-                  </button>
+                  <SwiperSlide key={src}>
+                    <button
+                      className="gal-slide"
+                      onClick={() => openPhoto(i)}
+                      aria-label={`Abrir foto ${i + 1}`}
+                    >
+                      <img
+                        src={src}
+                        alt={`Foto ${i + 1} del departamento`}
+                        loading={i < 2 ? "eager" : "lazy"}
+                        draggable="false"
+                      />
+                    </button>
+                  </SwiperSlide>
                 ))}
-              </div>
-
+              </Swiper>
               <span className="slider-count">{index + 1} / {total}</span>
-              <button className="slider-arrow left" onClick={prev} aria-label="Anterior">‹</button>
-              <button className="slider-arrow right" onClick={next} aria-label="Siguiente">›</button>
-            </div>
-
-            <div className="slider-dots">
-              {PHOTOS.map((_, i) => (
-                <button
-                  key={i}
-                  className={i === index ? "on" : ""}
-                  onClick={() => goTo(i)}
-                  aria-label={`Ir a foto ${i + 1}`}
-                />
-              ))}
             </div>
             <p className="hint">Desliza o usa las flechas · toca para ampliar</p>
           </>
         ) : (
           <div className="grid">
             {PHOTOS.map((src, i) => (
-              <button key={src} onClick={() => { setIndex(i); setLightbox(true); }}>
+              <button key={src} onClick={() => openPhoto(i)}>
                 <img src={src} alt={`Foto ${i + 1}`} loading="lazy" />
               </button>
             ))}
@@ -221,13 +208,13 @@ export default function App() {
 
       {/* LIGHTBOX */}
       {lightbox && (
-        <div className="lb" onClick={() => setLightbox(false)}>
+        <div className="lb" onClick={closeLightbox}>
           <img src={PHOTOS[index]} alt="Foto ampliada" onClick={(e) => e.stopPropagation()} />
           <div className="lb-bar" onClick={(e) => e.stopPropagation()}>
             <button onClick={() => setIndex((index - 1 + total) % total)}>‹</button>
             <span>{index + 1} / {total}</span>
             <button onClick={() => setIndex((index + 1) % total)}>›</button>
-            <button onClick={() => setLightbox(false)}>✕</button>
+            <button onClick={closeLightbox}>✕</button>
           </div>
         </div>
       )}
