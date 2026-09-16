@@ -69,6 +69,8 @@ body{margin:0;font-family:var(--sans);background:var(--bg);color:var(--ink);-web
 .price span{font-size:14px;font-weight:400;opacity:.7}
 .card h3{margin:16px 0 8px;font-size:15px}
 .card ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:14px}
+.loc{display:flex!important;align-items:center;gap:8px}
+.loc svg{color:var(--wa);flex:none}
 .check{margin:12px 0!important}
 .muted{color:var(--muted)!important;font-size:13px!important}
 .btn-wa.big{width:fit-content;margin:16px auto 0;font-size:15px}

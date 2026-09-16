@@ -152,8 +152,8 @@ export default function App() {
                   <SwiperSlide key={src}>
                     <button
                       className="gal-slide"
-                      onClick={() => openPhoto(i)}
-                      aria-label={`Abrir foto ${i + 1}`}
+                      onClick={() => swiperRef.current?.slideNext()}
+                      aria-label={`Foto ${i + 1} (tocar para siguiente)`}
                     >
                       <img
                         src={src}
@@ -167,7 +167,7 @@ export default function App() {
               </Swiper>
               <span className="slider-count">{index + 1} / {total}</span>
             </div>
-            <p className="hint">Desliza o usa las flechas · toca para ampliar</p>
+            <p className="hint">Desliza o toca la foto para avanzar</p>
           </>
         ) : (
           <div className="grid">
@@ -221,7 +221,7 @@ export default function App() {
       {/* CONTACTO / CIERRE */}
       <section className="section card dark" id="contacto">
         <h2>Agenda tu visita hoy</h2>
-        <p>📍 {SITE.ubicacionAprox}</p>
+        <p className="loc"><Icon d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11zM12 12a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" /> {SITE.ubicacionAprox}</p>
         <h3>Condiciones</h3>
         <ul>
           {SITE.requisitos.map((r) => <li key={r}>· {r}</li>)}
