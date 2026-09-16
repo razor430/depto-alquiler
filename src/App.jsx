@@ -105,7 +105,7 @@ export default function App() {
           <h1>{SITE.titulo}<br /><em>{SITE.zona}</em></h1>
           <p>{SITE.subtitulo}</p>
           <div className="hero-actions">
-            <a className="btn-wa" href={wa} target="_blank" rel="noreferrer">📲 Consultar por WhatsApp</a>
+            <a className="btn-wa" href={wa} target="_blank" rel="noreferrer">WhatsApp</a>
             <a className="btn-ghost" href="#galeria">Ver fotos</a>
           </div>
           <small>{SITE.precio}</small>
@@ -229,7 +229,7 @@ export default function App() {
         <ul>
           {SITE.requisitos.map((r) => <li key={r}>· {r}</li>)}
         </ul>
-        <a className="btn-wa big" href={wa} target="_blank" rel="noreferrer">📲 Consultar por WhatsApp</a>
+        <a className="btn-wa big" href={wa} target="_blank" rel="noreferrer">WhatsApp</a>
         <small>Respuesta rápida · Sin compromiso</small>
       </section>
 
