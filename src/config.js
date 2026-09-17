@@ -4,7 +4,7 @@ export const SITE = {
   zona: "en Villa Crespo",
   subtitulo: "A estrenar · Balcón terraza en 8vo piso · Apto profesional",
   badge: "Disponible ahora",
-  precio: "$890.000 ARS / mes",
+  precio: "$900.000 ARS / mes",
   precioMensual: "$900.000 ARS",
   // Cambia por tu número real con código país, sin + ni espacios. Ej: 5215500000000
   whatsappNumber: "5491140648243",
