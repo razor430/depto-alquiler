@@ -5,7 +5,7 @@ export const SITE = {
   subtitulo: "A estrenar · Balcón terraza en 8vo piso · Apto profesional",
   badge: "Disponible ahora",
   precio: "$890.000 ARS / mes",
-  precioMensual: "$890.000 ARS",
+  precioMensual: "$900.000 ARS",
   // Cambia por tu número real con código país, sin + ni espacios. Ej: 5215500000000
   whatsappNumber: "5491140648243",
   whatsappMessage: "Hola, me interesa el departamento en alquiler. ¿Sigue disponible? Quiero agendar una visita.",
