@@ -51,16 +51,37 @@ export default function App() {
   };
 
   useEffect(() => {
-    fetch(`https://abacus.jasoncameron.dev/hit/${COUNTER.namespace}/${COUNTER.key}`)
+    let yaContado = false;
+    try {
+      yaContado = localStorage.getItem("visita-contada") === "1";
+    } catch {
+      /* sin localStorage */
+    }
+    // Si ya contó antes, solo lee el valor sin incrementar (get). Si es nuevo, incrementa una vez (hit).
+    const accion = yaContado ? "get" : "hit";
+    fetch(`https://abacus.jasoncameron.dev/${accion}/${COUNTER.namespace}/${COUNTER.key}`)
       .then((r) => r.json())
       .then((d) => {
-        if (typeof d.value === "number") setVisitas(d.value);
+        if (typeof d.value === "number") {
+          setVisitas(d.value);
+          if (!yaContado) {
+            try {
+              localStorage.setItem("visita-contada", "1");
+            } catch {
+              /* noop */
+            }
+          }
+        }
         else throw new Error("bad");
       })
       .catch(() => {
         try {
-          const n = (parseInt(localStorage.getItem("visitas-local") || "0", 10) || 0) + 1;
-          localStorage.setItem("visitas-local", String(n));
+          // Fallback local: solo cuenta la primera vez en este navegador
+          if (!localStorage.getItem("visita-contada")) {
+            localStorage.setItem("visita-contada", "1");
+            localStorage.setItem("visitas-local", "1");
+          }
+          const n = parseInt(localStorage.getItem("visitas-local") || "1", 10) || 1;
           setVisitas(n);
         } catch {
           /* sin contador */
