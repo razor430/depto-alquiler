@@ -4,8 +4,8 @@ export const SITE = {
   zona: "en Villa Crespo",
   subtitulo: "A estrenar · Balcón terraza en 8vo piso · Apto profesional",
   badge: "Disponible ahora",
-  precio: "$940.000 ARS / mes",
-  precioMensual: "$940.000 ARS",
+  precio: "$890.000 ARS / mes",
+  precioMensual: "$890.000 ARS",
   // Cambia por tu número real con código país, sin + ni espacios. Ej: 5215500000000
   whatsappNumber: "5491140648243",
   whatsappMessage: "Hola, me interesa el departamento en alquiler. ¿Sigue disponible? Quiero agendar una visita.",
@@ -14,7 +14,7 @@ export const SITE = {
     "Duración: Contrato tradicional a 2 años",
     "1 mes de adelanto y 1 mes de depósito",
     "Actualización trimestral por Índice de Precios al Consumidor (IPC)",
-    "Expensas ordinarias ($150.000 actuales) y servicios a cargo del inquilino",
+    "Expensas ordinarias ($150.000 actuales y servicios básicos incluidos)",
     "Garantía a convenir (propietaria de CABA o Seguro de Caución) y demostración de ingresos comprobable",
   ],
 };
