@@ -61,5 +61,5 @@ export function whatsappLink() {
 // Contador global de visitas (Abacus, gratuito)
 export const COUNTER = {
   namespace: "villa-web-seven",
-  key: "visitas",
+  key: "visitas2",
 };

@@ -51,9 +51,10 @@ export default function App() {
   };
 
   useEffect(() => {
+    const FLAG = "visita-contada-v2";
     let yaContado = false;
     try {
-      yaContado = localStorage.getItem("visita-contada") === "1";
+      yaContado = localStorage.getItem(FLAG) === "1";
     } catch {
       /* sin localStorage */
     }
@@ -66,7 +67,7 @@ export default function App() {
           setVisitas(d.value);
           if (!yaContado) {
             try {
-              localStorage.setItem("visita-contada", "1");
+              localStorage.setItem(FLAG, "1");
             } catch {
               /* noop */
             }
@@ -77,11 +78,11 @@ export default function App() {
       .catch(() => {
         try {
           // Fallback local: solo cuenta la primera vez en este navegador
-          if (!localStorage.getItem("visita-contada")) {
-            localStorage.setItem("visita-contada", "1");
-            localStorage.setItem("visitas-local", "1");
+          if (!localStorage.getItem(FLAG)) {
+            localStorage.setItem(FLAG, "1");
+            localStorage.setItem("visitas-local-v2", "1");
           }
-          const n = parseInt(localStorage.getItem("visitas-local") || "1", 10) || 1;
+          const n = parseInt(localStorage.getItem("visitas-local-v2") || "1", 10) || 1;
           setVisitas(n);
         } catch {
           /* sin contador */
