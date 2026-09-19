@@ -11,7 +11,7 @@ export const SITE = {
   whatsappMessage: "Hola, me interesa el departamento en alquiler. ¿Sigue disponible? Quiero agendar una visita.",
   ubicacionAprox: "Villa Crespo",
   requisitos: [
-    "Duración: Contrato tradicional a 2 años",
+    "Duración: Contrato tradicional a 1 o 2 años",
     "1 mes de adelanto y 1 mes de depósito",
     "Actualización trimestral por Índice de Precios al Consumidor (IPC)",
     "Expensas ordinarias ($150.000 actuales y servicios básicos incluidos)",
