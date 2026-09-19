@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { SITE, PHOTOS, VIDEOS, HERO_IMG, COUNTER, whatsappLink } from "./config.js";
+import { SITE, PHOTOS, VIDEOS, HERO_IMG, COUNTER } from "./config.js";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Navigation, Pagination, Keyboard } from "swiper/modules";
 import "swiper/css";
@@ -29,7 +29,6 @@ export default function App() {
   const [grid, setGrid] = useState(false);
   const [visitas, setVisitas] = useState(null);
   const swiperRef = useRef(null);
-  const wa = whatsappLink();
   const total = PHOTOS.length;
 
   const openPhoto = (i) => { setIndex(i); swiperRef.current?.slideTo(i, 0); setLightbox(true); };
@@ -127,7 +126,6 @@ export default function App() {
           <h1>{SITE.titulo}<br /><em>{SITE.zona}</em></h1>
           <p>{SITE.subtitulo}</p>
           <div className="hero-actions">
-            <a className="btn-wa" href={wa} target="_blank" rel="noreferrer">📲 WhatsApp</a>
             <a className="btn-ghost" href="#galeria">Ver fotos</a>
           </div>
         </div>
@@ -249,8 +247,6 @@ export default function App() {
         <ul>
           {SITE.requisitos.map((r) => <li key={r}>· {r}</li>)}
         </ul>
-        <a className="btn-wa big" href={wa} target="_blank" rel="noreferrer">📲 WhatsApp</a>
-        <small>Respuesta rápida · Sin compromiso</small>
       </section>
 
       <footer>Hecho para renta inmediata · Fotos reales del inmueble{visitas !== null && <> · 👁 {visitas.toLocaleString("es-AR")} visitas</>}</footer>
