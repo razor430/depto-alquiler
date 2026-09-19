@@ -15,7 +15,7 @@ export const SITE = {
     "1 mes de adelanto y 1 mes de depósito",
     "Actualización trimestral por Índice de Precios al Consumidor (IPC)",
     "Expensas ordinarias ($150.000 actuales y servicios básicos incluidos)",
-    "Garantía a convenir (propietaria de CABA o Seguro de Caución) y demostración de ingresos comprobable",
+    "Garantía a convenir (propietaria de CABA/PBA o Seguro de Caución) y demostración de ingresos comprobable",
   ],
 };
 
